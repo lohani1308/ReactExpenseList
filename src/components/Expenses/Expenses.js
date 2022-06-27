@@ -5,6 +5,7 @@ import Card from '../UI/Card';
 import ExpensesFilter from "./ExpenseFilter";
 import './Expenses.css';
 import ExpenseList from './ExpenseList';
+import ExpenseChart from './ExpenseChart';
 
 const Expenses = (props) => {
    const [filteredYear, setFilteredYear] = useState('2020');
@@ -26,18 +27,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         /> 
-        {/* other than this we can store value in variable og error message ad if length >0 we can update that variable with mapped array */}
-        {/* {filterExpenses.length===0 ? (<p className="error_msg">No Expenses Found</p>) 
-        :
-        (filterExpenses.map((expense) => (
-          <ExpenseItems
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ) ))} */}
-
+        <ExpenseChart expenses={filterExpenses}/>
         <ExpenseList items={filterExpenses}/>
 
       </Card>
